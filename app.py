@@ -15,7 +15,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
 from datetime import datetime, timedelta, timezone
-
 app = FastAPI()
 load_dotenv()
 
@@ -61,7 +60,6 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
-
 
 # Signup route
 @app.post("/signup")
