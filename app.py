@@ -129,7 +129,7 @@ async def predict(file: UploadFile = File(...), option: str = None):
         predictions = model.predict(np.array(mapped_img_array).reshape(1, -1))
         result_str = "Normal" if predictions[0] == 0 else "COVID-19"
 
-        response = {"prediction": result_str,"metrics": metrics[option]}
+        response = {"prediction": result_str,"metrics": metrics[option],"option":option}
         return JSONResponse(content=response)
 
     except FileNotFoundError:
